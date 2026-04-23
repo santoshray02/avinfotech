@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+
+const mapQuery = encodeURIComponent(
+  `${site.address.street}, ${site.address.locality}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`
+);
+---
+<BaseLayout title="Contact" description="Get in touch with AV Infotech for RFPs, proposals, or general enquiries.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Contact</div>
+      <h1 class="mt-2 text-h1 font-extrabold">Let's talk about your project.</h1>
+      <p class="mt-6 text-slate leading-7">
+        We respond to government and public-sector enquiries within 24 hours.
+        For RFP responses, please attach the tender reference in your message.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-3">
+      <div class="lg:col-span-2"><ContactForm /></div>
+      <aside class="space-y-6">
+        <div class="rounded-card border border-slate-border bg-canvas p-6">
+          <div class="eyebrow">Registered office</div>
+          <address class="mt-2 not-italic text-sm text-ink-navy leading-6">
+            {site.address.street}<br />
+            {site.address.locality}, {site.address.city}<br />
+            {site.address.region} — {site.address.postalCode}<br />
+            India
+          </address>
+        </div>
+        <div class="rounded-card border border-slate-border bg-canvas p-6 space-y-3 text-sm">
+          <div>
+            <span class="eyebrow block">Email</span>
+            <a href={`mailto:${site.email}`} class="mt-1 inline-block font-semibold text-saffron break-all">{site.email}</a>
+          </div>
+          <div>
+            <span class="eyebrow block">Phone</span>
+            <a href={`tel:${site.phoneHref}`} class="mt-1 inline-block font-semibold text-ink-navy">{site.phone}</a>
+          </div>
+          <div>
+            <span class="eyebrow block">Hours</span>
+            <span class="mt-1 inline-block text-ink-navy">Mon–Sat · 10:00–19:00 IST</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="mt-12 overflow-hidden rounded-card border border-slate-border">
+      <iframe
+        title="Map to AV Infotech"
+        class="w-full h-80"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+      ></iframe>
+    </div>
+  </section>
+</BaseLayout>
