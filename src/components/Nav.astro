@@ -1,0 +1,75 @@
+---
+import { nav } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return path === '/';
+  const base = href.split('/').slice(0, 2).join('/');
+  return path.startsWith(base);
+};
+---
+<ul class="hidden lg:flex items-center gap-1">
+  {nav.map((item) => (
+    <li class="relative group">
+      <a
+        href={item.href}
+        class={`px-3 py-2 text-sm font-medium rounded-md hover:text-saffron transition-colors ${
+          isActive(item.href) ? 'text-saffron' : 'text-ink-navy'
+        }`}
+      >
+        {item.label}{item.children && <span aria-hidden="true" class="ml-1">▾</span>}
+      </a>
+      {item.children && (
+        <div class="absolute left-0 top-full pt-1 hidden group-hover:block group-focus-within:block">
+          <ul class="min-w-[220px] bg-white shadow-card rounded-md border border-slate-border p-2">
+            {item.children.map((c) => (
+              <li>
+                <a href={c.href} class="block px-3 py-2 text-sm rounded hover:bg-canvas text-ink-navy hover:text-saffron">
+                  {c.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </li>
+  ))}
+</ul>
+
+<button
+  id="mobile-nav-toggle"
+  class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-slate-border"
+  aria-label="Toggle navigation"
+  aria-expanded="false"
+  aria-controls="mobile-nav"
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+
+<nav id="mobile-nav" class="hidden lg:hidden fixed inset-x-0 top-16 bg-white border-t border-slate-border shadow-card">
+  <ul class="flex flex-col p-4 gap-1">
+    {nav.map((item) => (
+      <li>
+        <a href={item.href} class="block px-3 py-2 text-base font-semibold text-ink-navy hover:text-saffron">
+          {item.label}
+        </a>
+        {item.children && (
+          <ul class="pl-4 border-l border-slate-border ml-3">
+            {item.children.map((c) => (
+              <li><a href={c.href} class="block px-2 py-1.5 text-sm text-slate hover:text-saffron">{c.label}</a></li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+    <li class="mt-2"><a href="/contact" class="btn-primary w-full justify-center">Request a Proposal →</a></li>
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById('mobile-nav-toggle');
+  const drawer = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = drawer?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
