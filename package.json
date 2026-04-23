@@ -10,11 +10,9 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/sitemap": "3.2.1",
+    "@astrojs/sitemap": "3.7.2",
     "@astrojs/tailwind": "5.1.5",
     "@fontsource/inter": "5.2.8",
     "@fontsource/jetbrains-mono": "5.2.8",
