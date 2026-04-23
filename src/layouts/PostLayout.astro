@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  meta?: string;
+}
+const { title, description, eyebrow, meta } = Astro.props;
+---
+<BaseLayout title={title} description={description} type="article">
+  <article class="section max-w-prose">
+    {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+    <h1 class="mt-2 text-h1 font-extrabold">{title}</h1>
+    {meta && <div class="mt-2 text-sm text-slate">{meta}</div>}
+    <div class="mt-8 prose prose-slate max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

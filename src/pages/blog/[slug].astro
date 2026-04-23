@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const meta = `${entry.data.author} · ${entry.data.pubDate.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+---
+<PostLayout title={entry.data.title} description={entry.data.description} eyebrow="Blog" meta={meta}>
+  <Content />
+</PostLayout>
+<CTABand />

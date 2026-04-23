@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABand from '../../components/CTABand.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('case-studies', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<BaseLayout title="Case Studies" description="Selected engagements and outcomes from AV Infotech's work.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Case Studies</div>
+      <h1 class="mt-2 text-h1 font-extrabold">Engagements &amp; outcomes</h1>
+      <p class="mt-6 text-slate leading-7">
+        We publish anonymised and client-approved case studies from our engagements.
+      </p>
+    </div>
+
+    {studies.length === 0 ? (
+      <div class="mt-12 max-w-prose rounded-card border-2 border-dashed border-slate-border bg-canvas p-10 text-center">
+        <h2 class="font-bold text-ink-navy">Case studies are being prepared.</h2>
+        <p class="mt-2 text-sm text-slate leading-6">
+          Our first public case studies will be published as engagements conclude.
+          In the meantime, we can share references privately during procurement conversations.
+        </p>
+        <a href="/contact" class="mt-6 btn-primary">Talk to us →</a>
+      </div>
+    ) : (
+      <ul class="mt-12 grid gap-6 md:grid-cols-2">
+        {studies.map((s) => (
+          <li>
+            <a href={`/case-studies/${s.slug}`} class="block rounded-card border border-slate-border bg-white p-6 shadow-card hover:-translate-y-0.5 transition">
+              <div class="eyebrow">{s.data.sector}</div>
+              <h3 class="mt-2 font-bold text-ink-navy">{s.data.title}</h3>
+              <p class="mt-2 text-sm text-slate leading-6">{s.data.summary}</p>
+              <div class="mt-4 text-xs text-slate">{s.data.client} · {s.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short' })}</div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+  <CTABand />
+</BaseLayout>
