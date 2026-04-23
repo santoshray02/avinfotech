@@ -1,0 +1,17 @@
+---
+export interface Props {
+  href: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+const { href, title, description, icon } = Astro.props;
+---
+<a href={href} class="group block rounded-card border border-slate-border bg-white p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-lg">
+  <div class="flex h-10 w-10 items-center justify-center rounded-md bg-sand text-xl" aria-hidden="true">{icon}</div>
+  <h3 class="mt-4 text-lg font-bold text-ink-navy">{title}</h3>
+  <p class="mt-2 text-sm text-slate leading-6">{description}</p>
+  <span class="mt-4 inline-flex items-center text-sm font-semibold text-saffron">
+    Learn more <span class="ml-1 transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+  </span>
+</a>

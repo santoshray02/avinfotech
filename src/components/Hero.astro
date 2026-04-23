@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+---
+<section class="relative overflow-hidden bg-gradient-to-b from-white to-sand">
+  <div aria-hidden="true" class="pointer-events-none absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full"
+       style="background: radial-gradient(circle, rgba(234,88,12,0.25) 0%, transparent 70%);"></div>
+  <div class="relative max-w-content mx-auto px-6 md:px-8 py-20 md:py-28">
+    <span class="inline-flex items-center gap-2 rounded-full bg-white/80 border border-saffron/30 px-3 py-1 text-xs font-semibold tracking-[0.15em] text-amber-900 uppercase backdrop-blur">
+      🇮🇳 GST Registered · Bhopal, MP
+    </span>
+    <h1 class="mt-5 text-display font-extrabold max-w-3xl">
+      Building AI &amp; software for <span class="text-saffron">Digital India</span>
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg text-slate leading-7">
+      Trusted technology partner for government departments and public-sector institutions.
+      AI consulting, generative AI systems, and custom software — secure, compliant, and made in India.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+      <a href="/contact" class="btn-primary">Request a Proposal →</a>
+      <a href="/services/ai-consulting" class="btn-secondary">Our Services</a>
+    </div>
+    <dl class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
+      <div><dt class="eyebrow">Registered</dt><dd class="mt-1 font-semibold text-ink-navy">Nov 2025 · MP</dd></div>
+      <div><dt class="eyebrow">Focus</dt><dd class="mt-1 font-semibold text-ink-navy">Gov &amp; Public Sector</dd></div>
+      <div><dt class="eyebrow">Delivery</dt><dd class="mt-1 font-semibold text-ink-navy">India-first · Secure</dd></div>
+      <div><dt class="eyebrow">GSTIN</dt><dd class="mt-1 font-mono text-sm text-ink-navy">{site.gstin}</dd></div>
+    </dl>
+  </div>
+</section>

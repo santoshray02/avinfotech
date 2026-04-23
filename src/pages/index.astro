@@ -1,9 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABand from '../components/CTABand.astro';
+
+const services = [
+  {
+    href: '/services/ai-consulting',
+    title: 'AI Consulting & Strategy',
+    icon: '🧭',
+    description:
+      'Roadmaps, feasibility studies, and vendor-neutral architecture for AI adoption across departments and workflows.',
+  },
+  {
+    href: '/services/generative-ai',
+    title: 'Generative AI & Agents',
+    icon: '🤖',
+    description:
+      'RAG systems, domain chatbots, and AI copilots trained on your data — with guardrails, auditability, and privacy built in.',
+  },
+  {
+    href: '/services/custom-software',
+    title: 'Custom Software Development',
+    icon: '💻',
+    description:
+      'Web, mobile, and internal tools delivered end-to-end — from discovery to deployment on secure Indian infrastructure.',
+  },
+];
 ---
-<BaseLayout title="Home">
-  <div class="section">
-    <h1 class="text-display font-extrabold">AV Infotech</h1>
-    <p class="mt-4 text-slate">Shell placeholder — Hero component lands in Batch 3.</p>
-  </div>
+<BaseLayout>
+  <Hero />
+  <TrustStrip />
+
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">What we do</div>
+      <h2 class="mt-2 text-h2 font-extrabold">Three services, built for Indian institutions</h2>
+      <p class="mt-3 text-slate leading-7">
+        We combine AI engineering with software delivery experience to help government and
+        public-sector teams ship real, measurable outcomes.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </section>
+
+  <CTABand />
 </BaseLayout>
