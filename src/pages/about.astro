@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="About" description="AV Infotech is a Bhopal-based AI and software company focused on delivering compliant, secure systems to India's public institutions.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">About</div>
+      <h1 class="mt-2 text-h1 font-extrabold">A Bhopal-based team building AI and software that India's public institutions can trust.</h1>
+      <p class="mt-6 text-slate leading-7">
+        AV Infotech was founded in 2025 with a simple premise: India's government departments and
+        public-sector bodies deserve the same quality of AI and software delivery as any global
+        enterprise — without the cost, compliance friction, or vendor lock-in that usually comes with it.
+      </p>
+      <p class="mt-4 text-slate leading-7">
+        We combine deep technical execution with an understanding of how public-sector procurement,
+        audit, and operations actually work. Whether it's a generative-AI assistant for citizen services,
+        a custom portal for a department, or a strategic AI roadmap — we build to ship, measure, and hand over.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-canvas border-y border-slate-border">
+    <div class="max-w-content mx-auto px-6 md:px-8 py-16">
+      <div class="eyebrow">Principles</div>
+      <h2 class="mt-2 text-h2 font-extrabold">How we work</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {[
+          { title: 'India-first', body: 'Data residency, procurement norms, and language coverage are defaults, not afterthoughts.' },
+          { title: 'Secure by design', body: 'We follow IT Act and sectoral guidelines. Security reviews are part of delivery, not an add-on.' },
+          { title: 'Measurable outcomes', body: 'Every engagement ends with instrumentation — so the impact is visible, not claimed.' },
+        ].map((p) => (
+          <div class="rounded-card border border-slate-border bg-white p-6 shadow-card">
+            <h3 class="font-bold text-ink-navy">{p.title}</h3>
+            <p class="mt-2 text-sm text-slate leading-6">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Registration</div>
+      <h2 class="mt-2 text-h2 font-extrabold">Compliant and verifiable</h2>
+      <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-y-4 text-sm">
+        <dt class="font-semibold text-ink-navy">Legal name</dt><dd class="text-slate">{site.legalName}</dd>
+        <dt class="font-semibold text-ink-navy">Trade name</dt><dd class="text-slate">{site.tradeName}</dd>
+        <dt class="font-semibold text-ink-navy">Constitution</dt><dd class="text-slate">Proprietorship</dd>
+        <dt class="font-semibold text-ink-navy">GSTIN</dt><dd class="font-mono text-slate">{site.gstin}</dd>
+        <dt class="font-semibold text-ink-navy">Registered since</dt><dd class="text-slate">19 November 2025</dd>
+        <dt class="font-semibold text-ink-navy">State</dt><dd class="text-slate">Madhya Pradesh, India</dd>
+      </dl>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
