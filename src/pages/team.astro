@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+---
+<BaseLayout title="Team" description="The team behind AV Infotech.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Team</div>
+      <h1 class="mt-2 text-h1 font-extrabold">Small team. Senior hands. Based in Bhopal.</h1>
+      <p class="mt-6 text-slate leading-7">
+        We're intentionally senior-heavy. Every engagement is led by an engineer who has
+        shipped production systems — not staffed out to juniors after the sales call.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <article class="rounded-card border border-slate-border bg-white p-6 shadow-card">
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-saffron text-white font-extrabold text-lg">AD</div>
+          <div>
+            <h3 class="font-bold text-ink-navy">Aashirwad Dubey</h3>
+            <div class="text-sm text-slate">Founder &amp; Principal</div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-slate leading-6">
+          Leads engagements end-to-end — discovery, architecture, hands-on delivery, and handover.
+        </p>
+      </article>
+
+      <article class="rounded-card border-2 border-dashed border-slate-border bg-canvas p-6 flex flex-col justify-center items-center text-center">
+        <div class="text-3xl">🧑‍💻</div>
+        <h3 class="mt-2 font-bold text-ink-navy">Engineering roles opening</h3>
+        <p class="mt-2 text-sm text-slate">Full-stack, ML, and DevOps hires planned through 2026.</p>
+        <a href="/careers" class="mt-4 text-sm font-semibold text-saffron">See careers →</a>
+      </article>
+
+      <article class="rounded-card border border-slate-border bg-white p-6 shadow-card">
+        <h3 class="font-bold text-ink-navy">Partner network</h3>
+        <p class="mt-2 text-sm text-slate leading-6">
+          We collaborate with specialist partners — legal, compliance, accessibility auditors, and
+          design studios — so every engagement gets the right expertise at the right time.
+        </p>
+      </article>
+    </div>
+  </section>
+  <CTABand />
+</BaseLayout>

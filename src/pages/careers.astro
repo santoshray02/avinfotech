@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Careers" description="Join AV Infotech — engineering roles opening in 2026.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Careers</div>
+      <h1 class="mt-2 text-h1 font-extrabold">Come build software that matters, with senior engineers.</h1>
+      <p class="mt-6 text-slate leading-7">
+        AV Infotech is growing in 2026. We hire senior-to-mid engineers who want to work
+        close to real problems — government, public sector, field operations — and who
+        care about the craft of delivery, not just code.
+      </p>
+    </div>
+
+    <div class="mt-12 max-w-prose rounded-card border-2 border-dashed border-slate-border bg-canvas p-8 text-center">
+      <h2 class="font-bold text-ink-navy">No open roles right now.</h2>
+      <p class="mt-2 text-sm text-slate leading-6">
+        We're not actively hiring, but we're always happy to hear from engineers who want
+        to be first-in-line when roles open. Send a short note and a link to something you've built.
+      </p>
+      <a href={`mailto:${site.careersEmail}`} class="mt-6 btn-primary">Email {site.careersEmail} →</a>
+    </div>
+  </section>
+  <CTABand />
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABand from '../components/CTABand.astro';
+import FAQ from '../components/FAQ.astro';
+
+const pillars = [
+  { title: 'Delivery methodology', items: ['Weekly demos', 'Milestone billing', 'Bi-weekly stakeholder reviews', 'Runbook + training at handover'] },
+  { title: 'Security & compliance', items: ['IT Act 2000 alignment', 'OWASP ASVS-aligned reviews', 'Role-based access and audit trails', 'Data residency on client-approved infra'] },
+  { title: 'Engineering stack', items: ['Python, TypeScript, Go', 'PostgreSQL, Redis, object storage', 'FastAPI, Next.js, Astro, Flutter', 'Docker, Terraform, GitHub Actions'] },
+  { title: 'AI & GenAI', items: ['Open (Llama, Mistral, Gemma) + hosted (Claude, Gemini, OpenAI)', 'RAG with citation and guardrails', 'Evaluation harnesses with coverage metrics', 'Hindi + Indic-language handling'] },
+];
+
+const faqs = [
+  { q: 'Do you work on GeM (Government e-Marketplace)?', a: 'Yes. We can respond to RFPs routed through GeM and standard tender processes. We also support direct department engagements and empanelments.' },
+  { q: 'Where will our data live?', a: 'On infrastructure you specify — MeitY-empanelled cloud service providers, government cloud (MeghRaj), your on-prem racks, or a hybrid arrangement. We document data flows before build starts.' },
+  { q: 'How do handovers work?', a: 'Every engagement ends with source code in your repo, a runbook, a threat model, and a training session with your internal team. No lock-in.' },
+  { q: "What's the smallest engagement you take?", a: 'A 4-week consulting sprint or a 6-week GenAI proof-of-concept. We prefer small, scoped starts over open-ended contracts.' },
+];
+---
+<BaseLayout title="Capabilities" description="Delivery methodology, compliance posture, engineering stack, and AI capabilities at AV Infotech.">
+  <section class="section">
+    <div class="max-w-prose">
+      <div class="eyebrow">Capabilities</div>
+      <h1 class="mt-2 text-h1 font-extrabold">Built to ship in the public sector.</h1>
+      <p class="mt-6 text-slate leading-7">
+        We combine modern software engineering with the realities of government delivery —
+        procurement, audit, handover, and operations. Here's what we bring to every engagement.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {pillars.map((p) => (
+        <div class="rounded-card border border-slate-border bg-white p-6 shadow-card">
+          <h3 class="font-bold text-ink-navy">{p.title}</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate">
+            {p.items.map((i) => <li class="flex gap-2"><span class="text-saffron">▸</span><span>{i}</span></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="max-w-prose">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="mt-2 text-h2 font-extrabold">Common questions from procurement teams</h2>
+    </div>
+    <div class="mt-8 max-w-prose">
+      <FAQ items={faqs} />
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
