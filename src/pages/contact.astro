@@ -2,10 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site } from '../data/site';
-
-const mapQuery = encodeURIComponent(
-  `${site.address.street}, ${site.address.locality}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`
-);
 ---
 <BaseLayout title="Contact" description="Get in touch with AV Infotech for RFPs, proposals, or general enquiries.">
   <section class="section">
@@ -45,16 +41,6 @@ const mapQuery = encodeURIComponent(
           </div>
         </div>
       </aside>
-    </div>
-
-    <div class="mt-12 overflow-hidden rounded-card border border-slate-border">
-      <iframe
-        title="Map to AV Infotech"
-        class="w-full h-80"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-      ></iframe>
     </div>
   </section>
 </BaseLayout>
